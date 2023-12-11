@@ -27,8 +27,6 @@ class Plugin implements PluginInterface, EventSubscriberInterface {
   {
       $this->composer = $composer;
       $this->io = $io;
-
-      $this->io->write(["Hello World"], TRUE);
   }
 
   public function deactivate(Composer $composer, IOInterface $io)
@@ -55,10 +53,6 @@ class Plugin implements PluginInterface, EventSubscriberInterface {
     $cwd = $vendorDir . "/..";
 
     $this->io->write(["", "<info>Starting settup for Pantheon deploy.</info>"], TRUE);
-
-    // print_r($vendorDir);
-    // $this->io->write($vendorDir, TRUE);
-    // $this->io->write($cwd, TRUE);
 
     // Update git ignore.
     try {
