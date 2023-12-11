@@ -1,0 +1,33 @@
+{
+  "name": "bluecadet/bc_hgse_deployer",
+  "type": "composer-plugin",
+  "description": "Adds some scripts so we can deploy HGSE to Pantheon smoothly.",
+  "authors": [
+    {
+      "name": "Pete Inge",
+      "email": "pete.inge@gmail.com",
+      "role": "Maintainer"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/bluecadet/bc_hgse_deployer/issues"
+  },
+  "license": "GPL-2.0+",
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require": {
+    "php": "^8.0",
+    "composer-plugin-api": "^2.0"
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "autoload": {
+    "psr-4": {
+      "Bluecadet\\Commands\\": "src/Commands"
+    }
+  },
+  "extra": {
+    "class": "Bluecadet\\Commands\\Plugin"
+  }
+}
