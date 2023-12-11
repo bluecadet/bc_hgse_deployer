@@ -61,16 +61,26 @@ class Plugin implements PluginInterface, EventSubscriberInterface {
     // $this->io->write($cwd, TRUE);
 
     // Update git ignore.
-    $source_gitignore = $vendorDir . "/bluecadet/bc_hgse_deployer/assets/.gitignore";
-    $dest_gitignore = $cwd . "/.gitignore";
-    copy($source_gitignore, $dest_gitignore);
-    $this->io->write("  - Copied .gitignore file", TRUE);
+    try {
+      $source_gitignore = $vendorDir . "/bluecadet/bc_hgse_deployer/assets/.gitignore";
+      $dest_gitignore = $cwd . "/.gitignore";
+      copy($source_gitignore, $dest_gitignore);
+      $this->io->write("  - Copied .gitignore file", TRUE);
+    }
+    catch(\Exception $e) {
+      $this->io->writeError($e->getMessage(), TRUE);
+    }
 
     // Copy settings.pantheon.php.
-    $source_gitignore = $vendorDir . "/bluecadet/bc_hgse_deployer/assets/settings.pantheon.php";
-    $dest_gitignore = $cwd . "/web/sites/default/settings.pantheon.php";
-    copy($source_gitignore, $dest_gitignore);
-    $this->io->write("  - Copied Pantheon settings file", TRUE);
+    try {
+      $source_gitignore = $vendorDir . "/bluecadet/bc_hgse_deployer/assets/settings.pantheon.php";
+      $dest_gitignore = $cwd . "/web/sites/default/settings.pantheon.php";
+      copy($source_gitignore, $dest_gitignore);
+      $this->io->write("  - Copied Pantheon settings file", TRUE);
+    }
+    catch(\Exception $e) {
+      $this->io->writeError($e->getMessage(), TRUE);
+    }
 
     // Attempt to commit changes.
     try {
