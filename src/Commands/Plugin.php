@@ -77,17 +77,17 @@ class Plugin implements PluginInterface, EventSubscriberInterface {
     }
 
     // Attempt to commit changes.
-    try {
-      exec('git config --global user.email "bc-bot@bluecadet.com"');
-      exec('git config --global user.name "Bluecadet Bot"');
-      exec('git rm -r --cached .');
-      exec('git add .');
-      exec('git commit -am "Remove ignored files"');
-      $this->io->write("  - Commited ignored files", TRUE);
-    }
-    catch(\Exception $e) {
-      $this->io->writeError($e->getMessage(), TRUE);
-    }
+    // try {
+    //   exec('git config --global user.email "bc-bot@bluecadet.com"');
+    //   exec('git config --global user.name "Bluecadet Bot"');
+    //   exec('git rm -r --cached .');
+    //   exec('git add .');
+    //   exec('git commit -am "Remove ignored files"');
+    //   $this->io->write("  - Committed ignored files", TRUE);
+    // }
+    // catch(\Exception $e) {
+    //   $this->io->writeError($e->getMessage(), TRUE);
+    // }
 
     $this->io->write(["", "<info>Finished settup for Pantheon deploy.</info>", ""], TRUE);
 
