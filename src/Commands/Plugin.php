@@ -65,6 +65,17 @@ class Plugin implements PluginInterface, EventSubscriberInterface {
       $this->io->writeError($e->getMessage(), TRUE);
     }
 
+    // Update git ignore panth.
+    try {
+      $source_gitignore = $vendorDir . "/bluecadet/bc_hgse_deployer/assets/.gitignore-panth";
+      $dest_gitignore = $cwd . "/.gitignore-panth";
+      copy($source_gitignore, $dest_gitignore);
+      $this->io->write("  - Copied .gitignore-panth file", TRUE);
+    }
+    catch(\Exception $e) {
+      $this->io->writeError($e->getMessage(), TRUE);
+    }
+
     // Copy settings.pantheon.php.
     try {
       $source_gitignore = $vendorDir . "/bluecadet/bc_hgse_deployer/assets/settings.pantheon.php";
